@@ -1,0 +1,199 @@
+/* Style covering the main page */
+
+/* Footer magic: (from http://mystrd.at/modern-clean-css-sticky-footer/ */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+
+    font-size: 10px;
+}
+
+footer div {
+    padding-left: 10px;
+}
+
+body {
+    margin: 0 0 20px; /* bottom = footer height */
+}
+/* End footer magic */
+
+/* Body Styles */
+body {
+    background-color: white;    
+    color: black;
+    padding: 10px; /* Undo zero margins from footer magic*/
+}
+
+/* Header Information */
+header {
+    background-image: url('/static/img/mathtext.png');
+    background-position: -20px -20px;
+    webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
+header div {
+    background: -webkit-gradient(linear, left, right, from(white), to(transparent)); /* Saf4+, Chrome */
+    background: -webkit-linear-gradient(left, white, transparent); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(left, white, transparent); /* FF3.6+ */
+    background:     -ms-linear-gradient(left, white, transparent); /* IE10 */
+    background:      -o-linear-gradient(left, white, transparent); /* Opera 11.10+ */
+    background:         linear-gradient(left, white, transparent); /* W3C */
+    webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
+header img {
+    margin-left: 10px;
+}
+
+/* Navigation and Button Styles */
+nav {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+}
+
+nav ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+nav li, ul.button li {
+    display: inline;
+}
+
+nav a, .button a {
+    color: #FFFFFF;
+    text-decoration: none;
+    border: 1px solid #FFFFFF;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    padding-right: 3px;
+    padding-left: 3px;
+    webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+}
+
+nav a:hover, .button a:hover {
+    color: black;
+    background-color: #FFFFFF;
+}
+
+/* Make buttons huge on mobile */
+@media only screen and (max-device-width: 480px) {
+    nav {
+        font-size: 60px;
+    }
+
+    nav a, .button a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-right: 5px;
+        padding-left: 5px;
+        webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -khtml-border-radius: 8px;
+        border-radius: 8px;
+    }
+}
+
+
+/* Content Styles */
+.content {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+    font-size: 16px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 400;
+}
+
+/* Remove margins on mobile */
+@media only screen and (max-device-width: 480px) {
+    .content {
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 16px;
+    }
+}
+
+/* Typography for essays and other content.
+ * Note that this only applies to paragraphs, so that code doesn't get wrapped */
+.content p {
+    max-width: 40em;
+    line-height: 1.4em;
+}
+
+.content h1 {
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 30px;
+    margin-bottom: -10px;
+    color: white;
+}
+
+.content h1 a, .content h2 a { /* For blog post titles */
+    text-decoration: none;
+    color: white;
+}
+
+.content h2 {
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 24px;
+    margin-bottom: -10px;
+    color: white;
+}
+
+.content h3 {
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 18px;
+    margin-bottom: -10px;
+    color: white;
+}
+
+.content a {
+    color: #E8E8E8;
+    outline: none;
+}
+
+.content table {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E8E8E8;
+    border-collapse: collapse;
+}
+
+.content td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E8E8E8;
+}
+
+#social-row {
+    margin-top: 20px;
+}
+
+/* (show me more) buttons on the blog: */
+.more-button {
+    text-decoration: underline;
+    font-size: 11px;
+}
+
+span.more-button:hover {
+    cursor: pointer;
+}

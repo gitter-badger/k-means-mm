@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>K-MEANS-- Visualization</title>    
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">     
+    <script src="./assets/d3.v3.min.js"></script>
+    <script src="./assets/choose.js"></script>
+    <script src="./assets/generate.js"></script>
+    <script src="./assets/config.js"></script>
+    <script src="./assets/kmeans.js"></script>
+    <script src="./assets/main.js"></script>
+    <script src="./assets/underscore-min.js"></script>    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="shortcut icon" href="http://www.frank-fu.net/favicon.ico?v=2" />    
+</head>
+<body>
+    
+<style>
+  input { font-size: 40px;  }
+  text.choice_text { font-size: 20px;  }
+  text.choice_title { font-size: 40px;  }
+  .fh { font-weight:bold;}
+  .container{
+    display:table;
+    width:90%;
+    border-collapse: collapse;
+    color:black;
+    margin-top: 20px;
+  }
+ .heading{
+     font-weight: bold;
+     display:table-row;
+     background-color:lightgrey;
+     text-align: center;
+     line-height: 25px;
+     font-size: 14px;
+     font-family:georgia;
+     color:#fff;    
+ }
+ .table-row{  
+     display:table-row;
+     text-align: center;
+ }
+ .col{ 
+     display:table-cell;
+     border: 1px solid #CCC;
+     min-width: 200px;
+ }
+ .la {
+  text-align: left;
+  padding-left: 5px;
+ }
+</style>
+  <div>
+    <p>
+      This is a visualisation of the K-MEANS-- algorithm for our COMP5318 assignment 3 at the University of Sydney developed by our professor <a href="http://www.pmg.it.usyd.edu.au/outliers.pdf">Sanjay Chawla and Aris Gionis</a>.
+    </p>
+    <p>
+      Credits to <a href="http://www.naftaliharris.com/blog/visualizing-k-means-clustering/"> Naftali</a> as I've modified his visualisation of the k-means algorithm to illustrate this unified approach (K-MEANS--) of clustering and outlier detection.
+    </p>
+    
+    <p>
+      The pseudo code for the k-means-- algorithm is shown below      
+      <div><img border="0" src="./assets/7.png" alt="kmmm" width="30%" height="50%"></div>
+    </p>
+
+    <p> The <span style="color:cyan;">cyan</span> colored dots are the <span style="font-weight:bold">outliers</span>. </p>
+
+  </div>
+  <div id="svg_area" style="margin-top: 40px;">
+    <svg width="960" height="500">
+      <rect x="0" y="0" width="100%" height="100%" style="fill: rgb(255, 255, 255);"></rect>
+      <g transform="translate(40,20)">
+        <g class="own_region" opacity="0.5"></g>
+      <rect class="choice_rect" x="112.5" y="112.5" rx="10" ry="10" width="120.0000000000001" height="85.5" style="stroke: rgb(0, 0, 0); stroke-width: 3px; fill: rgb(255, 255, 255); cursor: pointer;"></rect>
+      <rect class="choice_rect" x="337.5" y="112.5" rx="10" ry="10" width="120.0000000000001" height="85.5" style="stroke: rgb(0, 0, 0); stroke-width: 3px; fill: rgb(255, 255, 255); cursor: pointer;"></rect>
+      <rect class="choice_rect" x="562.5" y="112.5" rx="10" ry="10" width="120.0000000000001" height="85.5" style="stroke: rgb(0, 0, 0); stroke-width: 3px; fill: rgb(255, 255, 255); cursor: pointer;"></rect>
+      <text class="choice_text" x="153.00000000000003" y="157.5" style="font-size: 20px; cursor: pointer;">I'll Choose</text>
+      <text class="choice_text" x="378.00000000000006" y="157.5" style="font-size: 20px; cursor: pointer;">Randomly</text>
+      <text class="choice_text" x="589.5" y="157.5" style="font-size: 20px; cursor: pointer;">Farthest Point</text>
+      <text class="choice_title" x="135.00000000000003" y="22.499999999999943" style="font-size: 40px;">How to pick the initial centroids?</text>
+      </g>
+    </svg>
+  </div>
+<div id="button_area" style="margin-top: 10px;"><input class="restart_button" name="restart_button" type="button" value="Restart"></div>
+<script>restart();</script>
+<div>
+  <div class="container">
+    <div class="heading">
+         <div class="col">Parameter</div>
+         <div class="col">Value</div>
+         <div class="col">Description </div>
+    </div>
+        <div class="table-row">
+         <div class="col">| X |</div>
+         <div class="col" id="xCount"></div>
+         <div class="col la">No. of points in the dataset</div>
+    </div>
+    <div class="table-row">
+         <div class="col">k</div>
+         <div class="col" id="kCount"></div>
+         <div class="col la">No. of clusters</div>
+    </div>
+    <div class="table-row" id="outlierRow">
+         <div class="col">l</div>
+         <div class="col" id="outlierCount"></div>
+         <div class="col la">No. of outliers (defaulted to 10% of |X| )</div>
+    </div>
+    <div class="table-row">
+         <div class="col" id="totalErrorLabel">E(X,C,L)</div>
+         <div class="col fh" id="totalError"></div>
+         <div class="col la">Sum of squared error</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
